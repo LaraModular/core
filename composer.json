@@ -1,0 +1,46 @@
+{
+    "name": "laramodular/core",
+    "description": "LaraModule Core - Reusable foundation package with file management, debugging tools, and base utilities",
+    "version": "1.0.0",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "laravel/pulse": "^1.4",
+        "laravel/telescope": "^5.9",
+        "laravel/framework": "^12.45"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaraModule\\Core\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaraModule\\Core\\Providers\\CoreServiceProvider",
+                "LaraModule\\Core\\Providers\\TelescopeServiceProvider"
+            ]
+        },
+        "laravel-module": {
+            "name": "Core",
+            "namespace": "LaraModule\\Core",
+            "root": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "laravel/pint": "^1.27",
+        "larastan/larastan": "^3.0",
+        "orchestra/testbench": "^10.0"
+    },
+    "scripts": {
+        "pint": [
+            "./vendor/bin/pint --config pint.json"
+        ],
+        "phpstan": [
+            "./vendor/bin/phpstan analyse --memory-limit=2G"
+        ]
+    }
+}
