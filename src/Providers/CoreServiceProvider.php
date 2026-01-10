@@ -5,8 +5,10 @@ namespace LaraModule\Core\Providers;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Support\ServiceProvider;
-use LaraModule\Core\Middleware\ApiLocale;
 use LaraModule\Core\Middleware\AddSecurityHeaders;
+use LaraModule\Core\Middleware\ApiLocale;
+use LaraModule\Core\Middleware\EnforceHTTPS;
+use LaraModule\Core\Middleware\TrustProxies;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -40,7 +42,9 @@ class CoreServiceProvider extends ServiceProvider
         }
 
         $router = $this->app['router'];
-        $router->pushMiddlewareToGroup('api', ApiLocale::class);
+        $router->prependMiddlewareToGroup('api', TrustProxies::class);
         $router->pushMiddlewareToGroup('api', AddSecurityHeaders::class);
+        $router->pushMiddlewareToGroup('api', EnforceHTTPS::class);
+        $router->pushMiddlewareToGroup('api', ApiLocale::class);
     }
 }
