@@ -6,4 +6,7 @@ return [
     'CreatePulseTables',
     'CreateFilesTable',
     'CreateTelescopeEntriesTables',
+    'CreateActivityLogTable',
+    'AddEventColumnToActivityLogTable',
+    'AddBatchUuidColumnToActivityLogTable',
 ];

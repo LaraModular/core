@@ -8,7 +8,8 @@
         "php": "^8.2",
         "laravel/pulse": "^1.4",
         "laravel/telescope": "^5.9",
-        "laravel/framework": "^12.45"
+        "laravel/framework": "^12.45",
+        "spatie/laravel-activitylog": "^4.10"
     },
     "autoload": {
         "psr-4": {
