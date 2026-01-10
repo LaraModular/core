@@ -36,9 +36,9 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     {
         parent::boot();
 
-		if(app()->runningInConsole()) {
-			config(['telescope.enabled' => false]);
-		}
+        if (app()->runningInConsole()) {
+            config(['telescope.enabled' => false]);
+        }
 
         // Auto-create symlink to Telescope assets to avoid publishing
         $this->createTelescopeSymlink();
