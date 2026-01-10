@@ -74,8 +74,9 @@ class File extends Model
     protected function src(): Attribute
     {
         return Attribute::get(
-            fn ($value, array $attributes) => Storage::disk($attributes['disk'])
-                ->url($attributes['folder'].$attributes['name'])
+            fn ($value, array $attributes) => method_exists(Storage::disk($attributes['disk']), 'url')
+                ? Storage::disk($attributes['disk'])->url($attributes['folder'].$attributes['name'])
+                : null
         );
     }
 }
