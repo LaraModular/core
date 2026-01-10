@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Support\ServiceProvider;
 use LaraModule\Core\Middleware\ApiLocale;
+use LaraModule\Core\Middleware\AddSecurityHeaders;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -38,6 +39,8 @@ class CoreServiceProvider extends ServiceProvider
             });
         }
 
-        $this->app['router']->pushMiddlewareToGroup('api', ApiLocale::class);
+        $router = $this->app['router'];
+        $router->pushMiddlewareToGroup('api', ApiLocale::class);
+        $router->pushMiddlewareToGroup('api', AddSecurityHeaders::class);
     }
 }
